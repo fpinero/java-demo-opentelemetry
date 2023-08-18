@@ -9,7 +9,9 @@ processors:
 
 exporters:
   logging:
-    loglevel: debug
+    verbosity: detailed
+    sampling_initial: 5
+    sampling_thereafter: 200
   jaeger:
     endpoint: jaeger-service:14250
     tls:

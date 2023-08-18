@@ -20,10 +20,11 @@ public class ProductRepository {
     public Product getProduct(Long productId){
         LOGGER.info("Getting Product from Product Repo With Product Id {}", productId);
 
-        if(!productMap.containsKey(productId)){
-            LOGGER.error("Product Not Found for Product Id {}", productId);
-            throw new ProductNotFoundException("Product Not Found");
-        }
+		/*
+		 * if(!productMap.containsKey(productId)){
+		 * LOGGER.error("Product Not Found for Product Id {}", productId); throw new
+		 * ProductNotFoundException("Product Not Found"); }
+		 */
 
         return productMap.get(productId);
     }

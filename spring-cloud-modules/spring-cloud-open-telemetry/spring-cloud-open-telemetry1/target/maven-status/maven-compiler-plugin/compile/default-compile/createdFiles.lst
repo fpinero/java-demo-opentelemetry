@@ -1,0 +1,9 @@
+com/baeldung/opentelemetry/ProductApplication.class
+com/baeldung/opentelemetry/repository/ProductRepository.class
+com/baeldung/opentelemetry/exception/ProductControllerAdvice.class
+com/baeldung/opentelemetry/exception/ProductNotFoundException.class
+com/baeldung/opentelemetry/controller/ProductController.class
+com/baeldung/opentelemetry/configuration/RestConfiguration.class
+com/baeldung/opentelemetry/model/Price.class
+com/baeldung/opentelemetry/model/Product.class
+com/baeldung/opentelemetry/api/client/PriceClient.class

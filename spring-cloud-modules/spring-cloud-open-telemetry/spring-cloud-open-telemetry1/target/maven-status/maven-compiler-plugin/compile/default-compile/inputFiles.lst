@@ -1,0 +1,9 @@
+/home/pineroef/reposRoche/java-demo-open-telemetetry/spring-cloud-modules/spring-cloud-open-telemetry/spring-cloud-open-telemetry1/src/main/java/com/baeldung/opentelemetry/api/client/PriceClient.java
+/home/pineroef/reposRoche/java-demo-open-telemetetry/spring-cloud-modules/spring-cloud-open-telemetry/spring-cloud-open-telemetry1/src/main/java/com/baeldung/opentelemetry/controller/ProductController.java
+/home/pineroef/reposRoche/java-demo-open-telemetetry/spring-cloud-modules/spring-cloud-open-telemetry/spring-cloud-open-telemetry1/src/main/java/com/baeldung/opentelemetry/configuration/RestConfiguration.java
+/home/pineroef/reposRoche/java-demo-open-telemetetry/spring-cloud-modules/spring-cloud-open-telemetry/spring-cloud-open-telemetry1/src/main/java/com/baeldung/opentelemetry/ProductApplication.java
+/home/pineroef/reposRoche/java-demo-open-telemetetry/spring-cloud-modules/spring-cloud-open-telemetry/spring-cloud-open-telemetry1/src/main/java/com/baeldung/opentelemetry/exception/ProductControllerAdvice.java
+/home/pineroef/reposRoche/java-demo-open-telemetetry/spring-cloud-modules/spring-cloud-open-telemetry/spring-cloud-open-telemetry1/src/main/java/com/baeldung/opentelemetry/repository/ProductRepository.java
+/home/pineroef/reposRoche/java-demo-open-telemetetry/spring-cloud-modules/spring-cloud-open-telemetry/spring-cloud-open-telemetry1/src/main/java/com/baeldung/opentelemetry/exception/ProductNotFoundException.java
+/home/pineroef/reposRoche/java-demo-open-telemetetry/spring-cloud-modules/spring-cloud-open-telemetry/spring-cloud-open-telemetry1/src/main/java/com/baeldung/opentelemetry/model/Price.java
+/home/pineroef/reposRoche/java-demo-open-telemetetry/spring-cloud-modules/spring-cloud-open-telemetry/spring-cloud-open-telemetry1/src/main/java/com/baeldung/opentelemetry/model/Product.java
