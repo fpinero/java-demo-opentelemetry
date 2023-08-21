@@ -1,0 +1,14 @@
+#https://grafana.com/docs/grafana/latest/administration/provisioning/
+apiVersion: 1
+
+datasources:
+
+- name: Loki
+  type: loki
+  uid: loki
+  access: proxy
+  url: http://192.168.1.117:3100 # replace for localhost if Windows/MAC or your IP in Linux
+  basicAuth: false
+  isDefault: false
+  version: 1
+  editable: false

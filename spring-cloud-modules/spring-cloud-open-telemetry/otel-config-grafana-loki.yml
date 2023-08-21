@@ -1,0 +1,41 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+  loki:
+    protocols:
+      http:
+    use_incoming_timestamp: true 
+
+processors:
+  attributes:
+    actions:
+      - action: insert
+        key: loki.attribute.labels
+        value: container
+      - action: insert
+        key: loki.format
+        value: raw
+
+exporters:
+  logging:
+    verbosity: detailed
+    sampling_initial: 5
+    sampling_thereafter: 200
+  jaeger:
+    endpoint: jaeger-service:14250
+    tls:
+      insecure: true
+  loki:
+    endpoint: http://loki:3100/loki/api/v1/push
+
+service:
+  pipelines:
+    traces:
+      receivers: [ otlp ]
+      exporters: [ logging, jaeger ]
+    logs:
+      receivers: [loki]
+      processors: [attributes]
+      exporters: [loki]

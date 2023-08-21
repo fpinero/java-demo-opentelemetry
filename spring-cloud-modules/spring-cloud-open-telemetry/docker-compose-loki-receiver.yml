@@ -1,0 +1,79 @@
+version: "3"
+
+services:
+  product-service:
+    platform: linux/x86_64
+    build: spring-cloud-open-telemetry1/
+    ports:
+      - "8080:8080"
+
+  price-service:
+    platform: linux/x86_64
+    build: spring-cloud-open-telemetry2/
+    ports:
+      - "8081"
+
+  jaeger-service:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"
+      - "14250"
+  
+  loki-service:
+    # https://github.com/grafana/loki/releases
+    image: grafana/loki:2.8.0
+    container_name: loki
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - /etc/localtime:/etc/localtime:ro      
+      - ./loki/loki.yml:/etc/loki/local-config.yaml
+      - loki:/data/loki
+    restart: unless-stopped
+    ports:
+      - 3100:3100
+      
+  promtail:
+    image: grafana/promtail:2.8.0
+    volumes:
+      - ./promtail/promtail-local-config.yaml:/etc/promtail/config.yaml:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: -config.file=/etc/promtail/config.yaml
+      
+  grafana-service:
+    # https://github.com/grafana/grafana/releases
+    image: grafana/grafana:9.4.7
+    container_name: grafana
+    #command:
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    depends_on:
+      - loki-service     
+    
+  collector:
+    image: otel/opentelemetry-collector-contrib:0.76.1
+    deploy:
+      resources:
+        limits:
+          memory: 125M
+    restart: unless-stopped
+    command: [ "--config=/etc/otel-collector-config.yml" ]
+    volumes:
+      - ./otel-config-grafana-loki.yml:/etc/otel-collector-config.yml
+    ports:
+      - "3500:3500" # loki receiver HTTP
+  
+volumes:
+  loki:
+  grafana-data:
+
+  
+     
